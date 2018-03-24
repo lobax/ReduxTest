@@ -1,14 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import TodoList from './src/components/TodoList'; 
+import { Provider } from 'react-redux'; 
+import { createStore, applyMiddleware, compose } from 'redux';
+import store from './src/store'; 
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+
+        <Provider store={store}>
+            <View style={styles.container}>
+                <TodoList />
+            </View>
+        </Provider>
     );
   }
 }
@@ -21,3 +26,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
